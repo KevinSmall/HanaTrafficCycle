@@ -1,0 +1,89 @@
+// The F extension are the files to hold the Full dataset
+namespace roadsafety.data;
+@Schema: 'ROAD'
+context RoadF {		// <- table name starts ROAD
+
+  type t_accref : String(13);
+  type t_vehprefix : String(1);
+  type t_degrees : Decimal(12,9);
+  
+  @Catalog.tableType: #COLUMN
+    Entity AccF {			// <- full table name will be RoadF.AccF
+		key ACCREF : t_accref;
+		EASTING : Integer;
+		NORTHING : Integer;
+		LON : t_degrees;
+		LAT : t_degrees;
+		POLICEFORCE : Integer;
+		SEVERITY : Integer;
+		VEHCOUNT : Integer;
+		CASCOUNT : Integer;
+		ACCDATE : LocalDate;
+		ACCDAY : Integer;
+		TIME : String(5);
+		LOCALAUTH : Integer;
+		LOCALAUTHH : String(12);
+		ROAD1CLASS : Integer;
+		ROAD1NUM : Integer;
+		ROAD1TYPE : Integer;
+		SPEEDLIMIT : Integer;
+		JUNCDETAIL : Integer;
+		JUNCCONTROL : Integer;
+		ROAD2CLASS : Integer;
+		ROAD2NUM : Integer;
+		PEDCROSSCON : Integer;
+		PEDCROSSFAC : Integer;
+		LIGHT : Integer;
+		WEATHER : Integer;
+		SURFACE : Integer;
+		SPECIAL : Integer;
+		HAZARD : Integer;
+		URBAN : Integer;
+		POLICEATSCENE : Integer;
+		LSOA : String(12);
+    }; 
+
+    @Catalog.tableType: #COLUMN
+    Entity VehF {			// <- full table name will be RoadF.VehF
+		key ACCREF : t_accref;
+		key VEHREF : Integer;
+		VEHTYPE : Integer;
+		VEHTOW : Integer;
+		VEHMANO : Integer;
+		LOCRESTRICT : Integer;
+		LOCJUNCT : Integer;
+		SKIDOVER : Integer;
+		HITOBJON : Integer;
+		VEHLEAVE : Integer;
+		HITOBJOFF : Integer;
+		IMPACT1 : Integer;
+		FOREIGN : Integer;
+		PURPOSE : Integer;
+		DRIVEGENDER : Integer;
+		DRIVEAGE : Integer;
+		ENGINECC : Integer;
+		PROPULSION : Integer;
+		VEHAGE : Integer;
+		DRIVDECILE : Integer;
+		DRIVHOME : Integer;
+	  }; 
+ 
+  @Catalog.tableType: #COLUMN
+  Entity CasF {			// <- full table name will be RoadF.CasF
+		key ACCREF : t_accref;
+		key VEHREF : Integer;
+		key CASREF : Integer;
+		CASCLASS : Integer;
+		CASGENDER : Integer;
+		CASAGE : Integer;
+		CASSEV : Integer;
+		PEDLOC : Integer;
+		PEDMOVE : Integer;
+		CARPASS : Integer;
+		BUSPASS : Integer;
+		ROADWORK : Integer;
+		CASTYPE : Integer;
+		CASHOME : Integer;
+	  }; 
+
+};
